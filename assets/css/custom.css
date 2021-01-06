@@ -1,0 +1,15 @@
+
+.navbar-brand ,
+.navbar-nav .nav-item .nav-link {
+    font-weight: bold !important;
+}
+
+.form-control, .is-focused .form-control {
+    background-image: 
+    linear-gradient(to top, #ffa726 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px);
+}
+
+
+.card-login.card-special .form {
+    min-height: 300px;
+}
