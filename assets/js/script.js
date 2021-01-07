@@ -1,26 +1,10 @@
-/*!
 
- =========================================================
- * Material Kit - v2.0.7
- =========================================================
-
- * Product Page: https://www.creative-tim.com/product/material-kit
- * Copyright 2020 Creative Tim (http://www.creative-tim.com)
-
- * Designed by www.invisionapp.com Coded by www.creative-tim.com
-
- =========================================================
-
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
- */
 
 var big_image;
 
 $(document).ready(function() {
   BrowserDetect.init();
 
-  // Init Material scripts for buttons ripples, inputs animations etc, more info on the next link https://github.com/FezVrasta/bootstrap-material-design#materialjs
   $('body').bootstrapMaterialDesign();
 
   window_width = $(window).width();
@@ -51,6 +35,32 @@ $(document).ready(function() {
   }
 
 
+});
+
+
+$(function() {
+  // Multiple images preview in browser
+  var imagesPreview = function(input, placeToInsertImagePreview) {
+
+      if (input.files) {
+          var filesAmount = input.files.length;
+
+          for (i = 0; i < filesAmount; i++) {
+              var reader = new FileReader();
+
+              reader.onload = function(event) {
+                  $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+              }
+
+              reader.readAsDataURL(input.files[i]);
+          }
+      }
+
+  };
+
+  $('#gallery-photo-add').on('change', function() {
+      imagesPreview(this, 'div.gallery');
+  });
 });
 
 $(document).on('click', '.navbar-toggler', function() {
@@ -170,10 +180,6 @@ materialKit = {
   }, 17)
 };
 
-// Returns a function, that, as long as it continues to be invoked, will not
-// be triggered. The function will be called after it stops being called for
-// N milliseconds. If `immediate` is passed, trigger the function on the
-// leading edge, instead of the trailing.
 
 function debounce(func, wait, immediate) {
   var timeout;

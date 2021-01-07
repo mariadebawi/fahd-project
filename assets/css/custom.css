@@ -13,3 +13,8 @@
 .card-login.card-special .form {
     min-height: 300px;
 }
+.gallery img{
+    height: 33.333333%;
+    width: 33.333333%;
+
+}
